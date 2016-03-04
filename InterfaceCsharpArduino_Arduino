@@ -1,0 +1,24 @@
+/* Original code by FirmanJml
+http://www.instructables.com/id/Interfacing-c-with-Arduino/?ALLSTEPS
+*/
+
+#define ledPin 2
+ 
+void setup() {
+    Serial.begin(9600);
+    pinMode(ledPin, OUTPUT);
+}
+ 
+void loop() {
+    char rx_data = Serial.read();
+    switch(rx_data) {
+        case 'ON':
+            digitalWrite(ledPin, HIGH);
+            Serial.println("Led is turned on!");
+            break;
+        case 'OFF':
+            ditialWrite(ledPin, LOW);
+            Serial.println("Led is turned off!");
+            break;
+    }
+}
