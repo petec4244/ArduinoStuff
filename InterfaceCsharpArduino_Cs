@@ -1,0 +1,47 @@
+/*Original Code by by FirmanJml
+http://www.instructables.com/id/Interfacing-c-with-Arduino/?ALLSTEPS
+*/
+
+
+add using System.IO.Ports;
+add SerialPort port = new SerialPort();
+ 
+public Form1()
+{
+    button1.Enable = true; // Connect Button
+    button2.Enable = flase; // ON button
+    button3.Enable = false; // OFF Button
+   
+    InitializeComponent();
+}
+ 
+private void button1_Click(object sender, EventArgs e)
+{
+    port.BaudRate = 9600;
+    port.PortName = textbox1.text;
+   
+    try
+    {
+        port.Open();
+        // if connected
+        button1.Enable = false; // Connect button disable.
+        button2.Enable = true; // On Button Enable.
+    } catch (Exception ex)
+    {
+        MessageBox.Show(ex.Message, "ERROR OCCURRED");
+    }
+}
+ 
+private void button2_Click(object sender, EventArgs e)
+{
+    port.WriteLine("ON");
+    button2.Enable = false;
+    button3.Enable = true;
+}
+ 
+private void button3_Click(object sender, EventArgs e)
+{
+    port.WriteLine("OFF");
+    button2.Enable = true;
+    button3.Enable = false;
+}
