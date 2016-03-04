@@ -9,7 +9,7 @@ add SerialPort port = new SerialPort();
 public Form1()
 {
     button1.Enable = true; // Connect Button
-    button2.Enable = flase; // ON button
+    button2.Enable = false; // ON button
     button3.Enable = false; // OFF Button
    
     InitializeComponent();
